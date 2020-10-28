@@ -16,7 +16,10 @@ import math
 import numpy as np
 import skimage.io
 
-from samples.coco import coco
+if __name__ == "__main__":
+    from samples.coco import coco
+else:
+    from RGB_algorithms.Mask_RCNN.samples.coco import coco
 
 if jupyter_notebook == True:
     import matplotlib
@@ -104,7 +107,7 @@ class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
 
 
 def get_people_count(image_path):
-    image = skimage.io.imread(r'samples/2020-10-13T12_22_46_MS-IPac67b205b3e3_rgb.jpg')
+    image = skimage.io.imread(image_path)
     
     # Run detection
     results = model.detect([image], verbose=1)
